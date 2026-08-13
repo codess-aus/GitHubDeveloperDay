@@ -1,9 +1,15 @@
 # Keynote — Agentic Coding: What does it actually mean?
 
 <figure class="gdd-hero">
-  <img src="../img/placeholder-hero.svg" alt="Placeholder hero graphic — the keynote slide deck hasn't been added to this site yet">
-  <figcaption>Hero image placeholder — swap in the real keynote title slide once it's available.</figcaption>
+  <img src="../img/2-hero-agentic.png" alt="Title slide: Agentic Coding — What does it actually mean?">
 </figure>
+
+<div class="gdd-speaker">
+  <div>
+    <strong>Xavier Morris</strong>
+    <span>Software Solution Engineer, Microsoft</span>
+  </div>
+</div>
 
 **9:30 – 10:15am**
 

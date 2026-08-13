@@ -1,9 +1,15 @@
 # Context management and optimization
 
 <figure class="gdd-hero">
-  <img src="../img/placeholder-hero.svg" alt="Placeholder hero graphic — the context management slide deck hasn't been added to this site yet">
-  <figcaption>Hero image placeholder — swap in the real slide once it's available.</figcaption>
+  <img src="../img/5-hero-context.png" alt="Title slide: Context management and optimization">
 </figure>
+
+<div class="gdd-speaker">
+  <div>
+    <strong>Xavier Morris</strong>
+    <span>Software Solution Engineer, Microsoft</span>
+  </div>
+</div>
 
 **11:30am – 12:15pm**
 
