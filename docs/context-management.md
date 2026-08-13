@@ -75,6 +75,119 @@ means context choices are also cost and latency choices:
     a large file or paste in verbose tool output, ask whether a smaller,
     targeted read would do — the answer is usually yes.
 
+## A real-world case study: optimizing GitHub's own agentic workflows
+
+The theory above plays out at scale in GitHub's own repositories. GitHub runs
+hundreds of agentic workflows for CI and maintenance — triaging issues,
+reviewing pull requests, checking compiler quality — and in April 2026 the
+team started systematically measuring and cutting their token usage. The
+[full write-up](https://github.blog/ai-and-ml/github-copilot/improving-token-efficiency-in-github-agentic-workflows/)
+is worth reading end to end, but three findings map directly onto the
+techniques above.
+
+<div class="gdd-feature-grid">
+  <div class="gdd-feature">
+    <h4>Unused tools are expensive to carry</h4>
+    <p>Every registered MCP tool's name and JSON schema rides along on every single API call, whether it's used or not. A 40-tool GitHub MCP server can add 10–15 KB of schema per turn — pure overhead if the agent only ever calls two or three of them. Pruning unused tools cut 8–12 KB of per-call context with no change in behaviour.</p>
+  </div>
+  <div class="gdd-feature">
+    <h4>The cheapest LLM call is the one you don't make</h4>
+    <p>Deterministic data-gathering — fetching a PR diff, issue metadata, or file contents — doesn't need a model in the loop at all. Moving those reads into plain <code>gh</code> CLI calls before the agent starts (or via a lightweight proxy) removes a full reasoning round-trip per fetch. One workflow saw a sustained <strong>62% reduction</strong> in effective token cost this way.</p>
+  </div>
+  <div class="gdd-feature">
+    <h4>Not all tokens cost the same</h4>
+    <p>Output tokens are roughly 4x the weighted cost of input tokens, and cache-read tokens are a fraction of the cost of fresh input. GitHub uses an "Effective Tokens" metric — <code>ET = m × (1.0×I + 0.1×C + 4.0×O)</code> — to normalise savings across model tiers, so a 10% ET reduction reflects a genuine cost reduction rather than a model swap in disguise.</p>
+  </div>
+</div>
+
+The broader lesson for any agent session — not just scheduled CI workflows —
+is the same one from earlier in this page: **scope what the agent can see
+and call**, prefer deterministic retrieval over agentic tool calls where the
+answer is fixed, and measure before you optimise. A misconfigured rule or an
+unused tool can silently double your cost without anyone noticing until
+someone looks at the numbers.
+
+Learn more: [Improving token efficiency in GitHub Agentic Workflows](https://github.blog/ai-and-ml/github-copilot/improving-token-efficiency-in-github-agentic-workflows/).
+
+## The harness matters too: efficiency inside VS Code
+
+The case study above is about optimising *what an agent is asked to do*.
+There's a second, equally important layer: optimising *the harness that runs
+the agent* — the code that builds every request, manages the prompt, and
+talks to the model provider. The [VS Code team's own write-up on token
+efficiency](https://code.visualstudio.com/blogs/2026/06/17/improving-token-efficiency-in-github-copilot)
+digs into exactly this, and it comes down to the same two repeating costs
+seen from a different angle:
+
+<div class="gdd-feature-grid">
+  <div class="gdd-feature">
+    <h4>The prompt prefix and caching</h4>
+    <p>System instructions, tool definitions, repository context, and conversation history repeat across nearly every turn. When a request's prefix exactly matches a prior one, the provider can reuse cached model state instead of recomputing it — cached tokens can be up to 10x cheaper, with lower latency too.</p>
+  </div>
+  <div class="gdd-feature">
+    <h4>Tool-definition overhead</h4>
+    <p>Every registered tool's full schema is normally sent on every request. <strong>Tool search</strong> lets the model see only a lightweight name + description upfront, loading the full schema on demand only for tools it actually searches for and uses — keeping the cached prefix intact and the context window leaner.</p>
+  </div>
+</div>
+
+Two provider-specific techniques stood out in VS Code's own experiments:
+
+- **Extended prompt caching (OpenAI models)** — keeping the prefix cache warm for up to 24 hours instead of the default few minutes meant a 300–900% relative increase in cache hit rate after a 30–60 minute gap between requests, i.e. picking a session back up later is now far more likely to hit cache.
+- **Smarter cache breakpoints (Anthropic models)** — deliberately anchoring Anthropic's fixed cache-breakpoint budget at the most stable parts of the prompt (end of tool definitions, end of system prompt, plus a rolling pair of recent-message anchors) pushed agentic session cache hit rates to around 94%.
+- **Tool search (both providers)** — reduced total tokens per turn by roughly 9–11%, and cut total session token usage for the median user by 9–18% depending on the model and provider.
+
+The takeaway for you as a Copilot user: you don't have to implement any of
+this yourself, but it explains *why* the advice in the next section works —
+staying on one model and toolset for a session, and picking sessions back up
+promptly, both help the harness keep your prompt cache warm and your tool
+overhead low.
+
+Learn more: [Improving token efficiency in GitHub Copilot (VS Code blog)](https://code.visualstudio.com/blogs/2026/06/17/improving-token-efficiency-in-github-copilot).
+
+## Optimizing your own day-to-day AI usage
+
+The GitHub case study above is about scheduled CI workflows, but the same
+principles apply directly to your everyday Copilot sessions. GitHub's
+[Optimizing your AI usage](https://docs.github.com/en/copilot/tutorials/optimize-ai-usage)
+tutorial distils this into eight practical habits:
+
+<div class="gdd-feature-grid">
+  <div class="gdd-feature">
+    <h4>1. Match the model to the task</h4>
+    <p>Reasoning models for architecture and hard debugging, mid-tier models when the plan is already clear, lighter models for routine refactors and formatting. Auto model selection routes each prompt to a suitable model automatically — and gets you a 10% cost discount on paid plans.</p>
+  </div>
+  <div class="gdd-feature">
+    <h4>2. Write clear, scoped prompts</h4>
+    <p>A clear task definition, relevant context up front, and an explicit stopping condition all cut down on retries and scope drift — without meaningfully increasing token usage themselves.</p>
+  </div>
+  <div class="gdd-feature">
+    <h4>3. Keep context lean</h4>
+    <p>Start a new conversation (<code>/new</code>) when you switch problems, run <code>/compact</code> to shrink a long session you still need, check usage with <code>/context</code>, maintain a good <code>AGENTS.md</code> / <code>copilot-instructions.md</code>, and only enable the MCP toolsets you actually need.</p>
+  </div>
+  <div class="gdd-feature">
+    <h4>4. Preserve the cache</h4>
+    <p>Cached tokens are typically billed at ~10% of fresh input cost — but switching models, changing reasoning level, or toggling tools mid-session invalidates that cache. Pick your settings up front and leave them alone for the session.</p>
+  </div>
+  <div class="gdd-feature">
+    <h4>5. Set AI credit session limits</h4>
+    <p>Cap how much a single session can spend in Copilot CLI or the SDK — the agent stops cleanly and lets you decide whether to raise the limit, rather than silently running up a bill.</p>
+  </div>
+  <div class="gdd-feature">
+    <h4>6. Research, plan, then implement</h4>
+    <p>Doing all three in one session lets irrelevant context pile up. Plan with a strong reasoning model (<code>/plan</code> in the CLI), then implement with a cheaper one in a fresh session.</p>
+  </div>
+  <div class="gdd-feature">
+    <h4>7. Turn learnings into instructions</h4>
+    <p>Use <code>/chronicle tips</code> and <code>/chronicle cost-tips</code> to surface recurring inefficiencies from your own session history, then encode the fix directly into <code>copilot-instructions.md</code> so it applies to every future session.</p>
+  </div>
+  <div class="gdd-feature">
+    <h4>8. Add deterministic guardrails</h4>
+    <p>Unit tests, linters, and security scans give the agent a fast pass/fail signal, which stops small errors from compounding into long, expensive chains of incorrect changes.</p>
+  </div>
+</div>
+
+Learn more: [Optimizing your AI usage to maximize efficiency and reduce cost](https://docs.github.com/en/copilot/tutorials/optimize-ai-usage).
+
 ## Bringing it back to today's other sessions
 
 The same governance and surface choices from [Getting hands on with the
