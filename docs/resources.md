@@ -27,6 +27,16 @@ references referenced throughout the day.
     <p>A spec-driven development toolkit that helps you turn ideas into specs and specs into working software with an agent.</p>
   </li>
   <li>
+    <span class="gdd-cat">Playbook</span>
+    <h3><a href="https://github.com/xavierxmorris/vscode-engineering-playbook" target="_blank" rel="noopener">VS Code Engineering Playbook</a></h3>
+    <p>Lessons extracted from microsoft/vscode — how one of the world's largest TypeScript codebases achieves fast tests, strict linting, and tight CI feedback.</p>
+  </li>
+  <li>
+    <span class="gdd-cat">Framework</span>
+    <h3><a href="https://github.com/codess-aus/hve-core" target="_blank" rel="noopener">HVE Core</a></h3>
+    <p>Hypervelocity Engineering prompt library for GitHub Copilot — specialised agents, reusable prompts, coding instructions, and validated skills for a repeatable, standards-aligned workflow.</p>
+  </li>
+  <li>
     <span class="gdd-cat">CLI</span>
     <h3><a href="https://docs.github.com/copilot/concepts/agents/copilot-cli" target="_blank" rel="noopener">GitHub Copilot CLI docs</a></h3>
     <p>Install and reference guide for the terminal-native Copilot agent — interactive and scripted usage.</p>
