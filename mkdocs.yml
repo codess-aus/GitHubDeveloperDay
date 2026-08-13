@@ -1,0 +1,82 @@
+site_name: GitHub Developer Day Perth
+site_description: >-
+  Companion site for GitHub Developer Day Perth — session summaries, deeper
+  dives, and resources for agentic coding with GitHub Copilot.
+site_url: https://codess-aus.github.io/GitHubDeveloperDay/
+repo_name: codess-aus/GitHubDeveloperDay
+repo_url: https://github.com/codess-aus/GitHubDeveloperDay
+edit_uri: edit/main/docs/
+
+docs_dir: docs
+
+theme:
+  name: material
+  favicon: img/favicon.svg
+  logo: img/favicon.svg
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
+      accent: purple
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      accent: purple
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.top
+    - navigation.footer
+    - content.action.edit
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - accessibility.skip-link
+
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - def_list
+  - footnotes
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+nav:
+  - Home: index.md
+  - Agenda:
+      - Keynote — Agentic Coding: keynote.md
+      - GitHub App & CLI: github-app-cli.md
+      - Context Management & Optimization: context-management.md
+      - GitHub SDK & Microsoft Foundry: sdk-foundry.md
+  - Resources: resources.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/codess-aus/GitHubDeveloperDay
+  generator: false
+
+copyright: >
+  Built for GitHub Developer Day Perth · Content and slides &copy; their respective presenters.
