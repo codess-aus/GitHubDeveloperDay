@@ -57,6 +57,11 @@ references referenced throughout the day.
     <p>How GitHub instrumented, audited, and optimized token usage across its own production agentic workflows — unused tools, deterministic data-gathering, and an Effective Tokens cost metric.</p>
   </li>
   <li>
+    <span class="gdd-cat">Engineering</span>
+    <h3><a href="https://code.visualstudio.com/blogs/2026/06/17/improving-token-efficiency-in-github-copilot" target="_blank" rel="noopener">Improving token efficiency in GitHub Copilot (VS Code)</a></h3>
+    <p>How the VS Code team cut token usage at the harness level with extended prompt caching, smarter cache breakpoints, and tool search — with real experiment numbers for OpenAI and Anthropic models.</p>
+  </li>
+  <li>
     <span class="gdd-cat">Tutorial</span>
     <h3><a href="https://docs.github.com/en/copilot/tutorials/optimize-ai-usage" target="_blank" rel="noopener">Optimizing your AI usage</a></h3>
     <p>Eight practical habits to reduce AI credit spend — model choice, prompt scoping, context hygiene, cache preservation, session limits, and deterministic guardrails.</p>

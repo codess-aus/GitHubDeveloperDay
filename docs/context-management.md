@@ -109,6 +109,41 @@ someone looks at the numbers.
 
 Learn more: [Improving token efficiency in GitHub Agentic Workflows](https://github.blog/ai-and-ml/github-copilot/improving-token-efficiency-in-github-agentic-workflows/).
 
+## The harness matters too: efficiency inside VS Code
+
+The case study above is about optimising *what an agent is asked to do*.
+There's a second, equally important layer: optimising *the harness that runs
+the agent* — the code that builds every request, manages the prompt, and
+talks to the model provider. The [VS Code team's own write-up on token
+efficiency](https://code.visualstudio.com/blogs/2026/06/17/improving-token-efficiency-in-github-copilot)
+digs into exactly this, and it comes down to the same two repeating costs
+seen from a different angle:
+
+<div class="gdd-feature-grid">
+  <div class="gdd-feature">
+    <h4>The prompt prefix and caching</h4>
+    <p>System instructions, tool definitions, repository context, and conversation history repeat across nearly every turn. When a request's prefix exactly matches a prior one, the provider can reuse cached model state instead of recomputing it — cached tokens can be up to 10x cheaper, with lower latency too.</p>
+  </div>
+  <div class="gdd-feature">
+    <h4>Tool-definition overhead</h4>
+    <p>Every registered tool's full schema is normally sent on every request. <strong>Tool search</strong> lets the model see only a lightweight name + description upfront, loading the full schema on demand only for tools it actually searches for and uses — keeping the cached prefix intact and the context window leaner.</p>
+  </div>
+</div>
+
+Two provider-specific techniques stood out in VS Code's own experiments:
+
+- **Extended prompt caching (OpenAI models)** — keeping the prefix cache warm for up to 24 hours instead of the default few minutes meant a 300–900% relative increase in cache hit rate after a 30–60 minute gap between requests, i.e. picking a session back up later is now far more likely to hit cache.
+- **Smarter cache breakpoints (Anthropic models)** — deliberately anchoring Anthropic's fixed cache-breakpoint budget at the most stable parts of the prompt (end of tool definitions, end of system prompt, plus a rolling pair of recent-message anchors) pushed agentic session cache hit rates to around 94%.
+- **Tool search (both providers)** — reduced total tokens per turn by roughly 9–11%, and cut total session token usage for the median user by 9–18% depending on the model and provider.
+
+The takeaway for you as a Copilot user: you don't have to implement any of
+this yourself, but it explains *why* the advice in the next section works —
+staying on one model and toolset for a session, and picking sessions back up
+promptly, both help the harness keep your prompt cache warm and your tool
+overhead low.
+
+Learn more: [Improving token efficiency in GitHub Copilot (VS Code blog)](https://code.visualstudio.com/blogs/2026/06/17/improving-token-efficiency-in-github-copilot).
+
 ## Optimizing your own day-to-day AI usage
 
 The GitHub case study above is about scheduled CI workflows, but the same
