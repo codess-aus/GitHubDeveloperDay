@@ -52,6 +52,16 @@ references referenced throughout the day.
     <p>Native git worktree support in GitHub Desktop, plus Copilot-powered commit authoring and merge conflict resolution — the same isolation pattern used by the Copilot CLI and app.</p>
   </li>
   <li>
+    <span class="gdd-cat">Cost &amp; efficiency</span>
+    <h3><a href="https://github.blog/ai-and-ml/github-copilot/improving-token-efficiency-in-github-agentic-workflows/" target="_blank" rel="noopener">Improving token efficiency in GitHub Agentic Workflows</a></h3>
+    <p>How GitHub instrumented, audited, and optimized token usage across its own production agentic workflows — unused tools, deterministic data-gathering, and an Effective Tokens cost metric.</p>
+  </li>
+  <li>
+    <span class="gdd-cat">Tutorial</span>
+    <h3><a href="https://docs.github.com/en/copilot/tutorials/optimize-ai-usage" target="_blank" rel="noopener">Optimizing your AI usage</a></h3>
+    <p>Eight practical habits to reduce AI credit spend — model choice, prompt scoping, context hygiene, cache preservation, session limits, and deterministic guardrails.</p>
+  </li>
+  <li>
     <span class="gdd-cat">Protocol</span>
     <h3><a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener">Model Context Protocol (MCP)</a></h3>
     <p>The open protocol behind Copilot's tool integrations — connect your own data sources and tools to any compatible agent.</p>
