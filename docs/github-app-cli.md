@@ -131,6 +131,83 @@ Available on Linux, macOS and Windows, with PowerShell 6 or WSL.
   <img src="../img/3.5-GHCPCLI.png" alt="Slide: GitHub Copilot CLI install and run instructions">
 </figure>
 
+## Cloud and local sandboxes
+
+As Copilot CLI takes more actions on your behalf — running shell commands,
+editing files, calling MCP servers — it needs somewhere safe to do that
+work. **Sandboxes** are the execution platform behind that: isolated
+environments that let Copilot interact with your code and tools securely,
+either on your own machine or in a fully isolated cloud environment.
+
+!!! note "Public preview"
+    Cloud and local sandboxes are in public preview and subject to change.
+
+<div class="gdd-feature-grid">
+  <div class="gdd-feature">
+    <h4>Local sandboxing</h4>
+    <p>Runs on your own machine with restricted filesystem, network and system access. Free on every Copilot plan. Enable with <code>/sandbox enable</code> (start the CLI with <code>--experimental</code> first).</p>
+  </div>
+  <div class="gdd-feature">
+    <h4>Cloud sandboxing</h4>
+    <p>Runs the whole CLI session remotely in an ephemeral, isolated Linux environment hosted by GitHub. Billed by usage. Start with <code>copilot --cloud --experimental</code>.</p>
+  </div>
+</div>
+
+**Local sandboxing** is powered by Microsoft eXecution Container (MXC), which
+maps a single sandbox policy onto the best isolation mechanism for your OS —
+Seatbelt on macOS, bubblewrap on Linux, ProcessContainer on Windows Insiders
+builds. You control what's readable, writable, and reachable over the
+network, whether Git/`gh` credentials are exposed inside the sandbox, and
+whether local MCP/language servers are sandboxed too. Enterprises can require
+it and lock the policy via managed settings.
+
+**Cloud sandboxing** is built on Azure Container Apps Sandboxes, with GitHub
+providing identity, policy and billing. It's useful for offloading
+compute-heavy tasks without tying up your laptop, picking a session back up
+from a different device, and applying the same governance you already use
+for the Copilot cloud agent — cloud sandbox policy shares configuration with
+cloud agent policy. Sessions move through three states: **Active**,
+**Stopped** (snapshotted so you can resume later) and **Deleted** (removed
+for good). An organisation or enterprise owner has to turn on the **Cloud
+Sandbox access** policy before members can use it.
+
+Learn more: [About cloud and local sandboxes](https://docs.github.com/en/copilot/concepts/about-cloud-and-local-sandboxes).
+
+## Delegating tasks to Copilot
+
+Once you're comfortable approving Copilot's tool calls one at a time, the
+next step is letting it run further ahead on its own — either on your
+machine or handed off to GitHub entirely.
+
+<div class="gdd-feature-grid">
+  <div class="gdd-feature">
+    <h4>Autopilot mode</h4>
+    <p>Runs locally in your CLI session with full permissions granted up front — Copilot works through a task without stopping to ask, and you watch progress in real time. Cycle to it with <code>Shift+Tab</code>, or run it directly.</p>
+  </div>
+  <div class="gdd-feature">
+    <h4><code>/delegate</code></h4>
+    <p>Hands the task to Copilot cloud agent on GitHub. Copilot commits a checkpoint, opens a draft pull request, and keeps working in the background — even after you close your laptop.</p>
+  </div>
+</div>
+
+```bash
+# Autopilot, programmatically, capped at 10 continuations
+copilot --autopilot --yolo --max-autopilot-continues 10 -p "fix the failing tests"
+
+# Delegate to Copilot cloud agent from an interactive session
+/delegate complete the API integration tests and fix any failing edge cases
+
+# Shorthand for /delegate
+& complete the API integration tests and fix any failing edge cases
+```
+
+Use **autopilot** when you want hands-free execution but still want to be
+the one watching it happen. Use **`/delegate`** when you want to hand a task
+off completely — Copilot cloud agent will open the pull request and request
+your review once it's done.
+
+Learn more: [Delegating tasks to Copilot](https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/delegate-tasks-to-cca).
+
 ## GitHub Copilot app
 
 A desktop control centre for agent-driven development, built on the Copilot
