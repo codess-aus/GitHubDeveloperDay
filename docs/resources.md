@@ -47,6 +47,11 @@ references referenced throughout the day.
     <p>Autopilot mode versus <code>/delegate</code> — two ways to hand a task off to Copilot and let it run further ahead on its own.</p>
   </li>
   <li>
+    <span class="gdd-cat">Git workflow</span>
+    <h3><a href="https://github.blog/changelog/2026-06-26-github-desktop-3-6-worktrees-and-deeper-copilot-integration/" target="_blank" rel="noopener">GitHub Desktop 3.6: worktrees and Copilot integration</a></h3>
+    <p>Native git worktree support in GitHub Desktop, plus Copilot-powered commit authoring and merge conflict resolution — the same isolation pattern used by the Copilot CLI and app.</p>
+  </li>
+  <li>
     <span class="gdd-cat">Protocol</span>
     <h3><a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener">Model Context Protocol (MCP)</a></h3>
     <p>The open protocol behind Copilot's tool integrations — connect your own data sources and tools to any compatible agent.</p>
