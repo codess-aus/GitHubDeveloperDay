@@ -48,9 +48,7 @@ write-up than you'll see on stage, and links to go further after today.
 
 <div class="gdd-grid">
   <a class="gdd-card" href="keynote/">
-    <div class="gdd-thumb placeholder" role="img" aria-label="Placeholder hero image">
-      <img class="gdd-thumb" src="img/placeholder-hero.svg" alt="" loading="lazy">
-    </div>
+    <img class="gdd-thumb" src="img/2-hero-agentic.png" alt="" loading="lazy">
     <div class="gdd-body">
       <span class="gdd-tag">Keynote · 9:30am</span>
       <h3>Agentic Coding: What does it actually mean?</h3>
@@ -68,9 +66,7 @@ write-up than you'll see on stage, and links to go further after today.
   </a>
 
   <a class="gdd-card" href="context-management/">
-    <div class="gdd-thumb placeholder" role="img" aria-label="Placeholder hero image">
-      <img class="gdd-thumb" src="img/placeholder-hero.svg" alt="" loading="lazy">
-    </div>
+    <img class="gdd-thumb" src="img/5-hero-context.png" alt="" loading="lazy">
     <div class="gdd-body">
       <span class="gdd-tag">Deep dive · 11:30am</span>
       <h3>Context management and optimization</h3>
