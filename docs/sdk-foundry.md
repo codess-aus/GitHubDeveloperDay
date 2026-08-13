@@ -1,7 +1,7 @@
 # GitHub SDK and Microsoft Foundry
 
 <figure class="gdd-hero">
-  <img src="img/4-SDKAndFoundry.png" alt="Title slide: GitHub SDK and Microsoft Foundry">
+  <img src="../img/4-SDKAndFoundry.png" alt="Title slide: GitHub SDK and Microsoft Foundry">
 </figure>
 
 <div class="gdd-speaker">
@@ -25,7 +25,7 @@ Copilot SDK gives you a programmable way to put that same agent loop **inside
 your own app, tool, workflow, or service.**
 
 <figure class="gdd-hero">
-  <img src="img/4.2-GHCPSDK.png" alt="Slide: GitHub Copilot SDK — reusable agent harness, GA, 6 SDKs, agent runtime">
+  <img src="../img/4.2-GHCPSDK.png" alt="Slide: GitHub Copilot SDK — reusable agent harness, GA, 6 SDKs, agent runtime">
 </figure>
 
 ### What it is
@@ -69,7 +69,7 @@ a governed, tool-using workflow."
 </div>
 
 <figure class="gdd-hero">
-  <img src="img/4.3-Harness.png" alt="Slide: why use it — a harness for real work, not just code">
+  <img src="../img/4.3-Harness.png" alt="Slide: why use it — a harness for real work, not just code">
 </figure>
 
 !!! tip "Good fit signal"
@@ -97,7 +97,7 @@ harness pattern across Microsoft's products and platforms:
   loop.
 
 <figure class="gdd-hero">
-  <img src="img/4.4-Patterns.png" alt="Diagram: Copilot-style harness pattern connecting GitHub Copilot SDK, Copilot Studio, Microsoft Scout, and Foundry / hosted agents">
+  <img src="../img/4.4-Patterns.png" alt="Diagram: Copilot-style harness pattern connecting GitHub Copilot SDK, Copilot Studio, Microsoft Scout, and Foundry / hosted agents">
 </figure>
 
 !!! quote

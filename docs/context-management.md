@@ -1,7 +1,7 @@
 # Context management and optimization
 
 <figure class="gdd-hero">
-  <img src="img/placeholder-hero.svg" alt="Placeholder hero graphic — the context management slide deck hasn't been added to this site yet">
+  <img src="../img/placeholder-hero.svg" alt="Placeholder hero graphic — the context management slide deck hasn't been added to this site yet">
   <figcaption>Hero image placeholder — swap in the real slide once it's available.</figcaption>
 </figure>
 
