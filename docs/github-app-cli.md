@@ -11,8 +11,6 @@
   </div>
 </div>
 
-**10:15 – 11:00am**
-
 ## Six surfaces, one Copilot subscription
 
 GitHub Copilot isn't a single tool anymore — it's a runtime that shows up in
