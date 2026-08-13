@@ -37,6 +37,16 @@ references referenced throughout the day.
     <p>Guidance on sandboxing, approvals, and getting reliable results from long-running CLI sessions.</p>
   </li>
   <li>
+    <span class="gdd-cat">Isolation</span>
+    <h3><a href="https://docs.github.com/en/copilot/concepts/about-cloud-and-local-sandboxes" target="_blank" rel="noopener">Cloud and local sandboxes</a></h3>
+    <p>How Copilot CLI runs securely on your machine or in an isolated cloud environment, and how to configure or govern it.</p>
+  </li>
+  <li>
+    <span class="gdd-cat">Autonomy</span>
+    <h3><a href="https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/delegate-tasks-to-cca" target="_blank" rel="noopener">Delegating tasks to Copilot</a></h3>
+    <p>Autopilot mode versus <code>/delegate</code> — two ways to hand a task off to Copilot and let it run further ahead on its own.</p>
+  </li>
+  <li>
     <span class="gdd-cat">Protocol</span>
     <h3><a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener">Model Context Protocol (MCP)</a></h3>
     <p>The open protocol behind Copilot's tool integrations — connect your own data sources and tools to any compatible agent.</p>
