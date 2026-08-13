@@ -11,8 +11,6 @@
   </div>
 </div>
 
-**9:30 – 10:15am**
-
 ## The vibe shift
 
 For the last couple of years, "AI in your app" meant a chat box bolted onto the

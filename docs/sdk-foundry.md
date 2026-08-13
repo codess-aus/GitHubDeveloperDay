@@ -11,8 +11,6 @@
   </div>
 </div>
 
-**12:15 – 12:45pm**
-
 ```bash
 dotnet add package GitHub.Copilot.SDK
 ```

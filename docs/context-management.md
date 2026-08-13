@@ -11,8 +11,6 @@
   </div>
 </div>
 
-**11:30am – 12:15pm**
-
 ## Why context is the real bottleneck
 
 Every agent surface you saw in the previous session — editor, CLI, app,
