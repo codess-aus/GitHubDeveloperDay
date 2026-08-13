@@ -1,0 +1,221 @@
+/* Custom styling layered on top of Material for MkDocs */
+
+:root {
+  --gdd-radius: 12px;
+}
+
+/* Hero banner under the page title */
+.gdd-hero {
+  border-radius: var(--gdd-radius);
+  overflow: hidden;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  margin: 1.2rem 0 1.6rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.gdd-hero img {
+  display: block;
+  width: 100%;
+}
+
+.gdd-hero figcaption {
+  padding: 0.6rem 1rem;
+  font-size: 0.8rem;
+  color: var(--md-default-fg-color--light);
+  background: var(--md-default-bg-color);
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+}
+
+/* Card grid for home page + agenda cards */
+.gdd-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.1rem;
+  margin: 1.6rem 0;
+}
+
+.gdd-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: var(--gdd-radius);
+  overflow: hidden;
+  text-decoration: none !important;
+  color: var(--md-default-fg-color) !important;
+  background: var(--md-default-bg-color);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.gdd-card:hover,
+.gdd-card:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  border-color: var(--md-accent-fg-color);
+}
+
+.gdd-card .gdd-thumb {
+  aspect-ratio: 16/9;
+  width: 100%;
+  object-fit: cover;
+  background: var(--md-code-bg-color);
+}
+
+.gdd-card .gdd-thumb.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gdd-card .gdd-body {
+  padding: 0.9rem 1.1rem 1.1rem;
+}
+
+.gdd-card .gdd-tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--md-accent-fg-color);
+  background: var(--md-accent-fg-color--transparent);
+  padding: 2px 8px;
+  border-radius: 12px;
+  margin-bottom: 0.5rem;
+}
+
+.gdd-card h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.02rem;
+}
+
+.gdd-card p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--md-default-fg-color--light);
+}
+
+/* Feature grid (small info tiles) */
+.gdd-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+  margin: 1.4rem 0;
+}
+
+.gdd-feature {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: var(--gdd-radius);
+  padding: 1rem 1.1rem;
+  background: var(--md-code-bg-color);
+}
+
+.gdd-feature h4 {
+  margin: 0 0 0.4rem;
+  color: var(--md-accent-fg-color);
+  font-size: 1rem;
+}
+
+.gdd-feature p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--md-default-fg-color--light);
+}
+
+/* Agenda list */
+.gdd-agenda {
+  list-style: none;
+  padding: 0;
+  margin: 1.4rem 0;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: var(--gdd-radius);
+  overflow: hidden;
+}
+
+.gdd-agenda li {
+  display: flex;
+  gap: 1rem;
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  align-items: baseline;
+}
+
+.gdd-agenda li:last-child {
+  border-bottom: none;
+}
+
+.gdd-agenda li.gdd-break {
+  background: var(--md-code-bg-color);
+  font-style: italic;
+  color: var(--md-default-fg-color--light);
+}
+
+.gdd-agenda time {
+  flex-shrink: 0;
+  width: 150px;
+  font-weight: 700;
+  color: var(--md-accent-fg-color);
+  font-size: 0.85rem;
+}
+
+.gdd-agenda a {
+  font-weight: 600;
+}
+
+/* Resource cards */
+.gdd-resources {
+  list-style: none;
+  padding: 0;
+  margin: 1.4rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.gdd-resources li {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: var(--gdd-radius);
+  padding: 1rem 1.1rem;
+  background: var(--md-default-bg-color);
+}
+
+.gdd-resources .gdd-cat {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--md-accent-fg-color);
+  font-weight: 700;
+}
+
+.gdd-resources h3 {
+  margin: 0.3rem 0 0.3rem;
+  font-size: 1rem;
+}
+
+.gdd-resources p {
+  margin: 0.2rem 0 0;
+  font-size: 0.86rem;
+  color: var(--md-default-fg-color--light);
+}
+
+/* Callout speaker card */
+.gdd-speaker {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: var(--gdd-radius);
+  padding: 0.7rem 1rem;
+  margin: 1rem 0 1.6rem;
+  background: var(--md-code-bg-color);
+  max-width: fit-content;
+}
+
+.gdd-speaker strong {
+  display: block;
+  font-size: 0.95rem;
+}
+
+.gdd-speaker span {
+  font-size: 0.82rem;
+  color: var(--md-default-fg-color--light);
+}
