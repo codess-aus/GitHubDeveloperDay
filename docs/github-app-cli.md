@@ -1,7 +1,7 @@
 # Getting hands on with the GitHub App and CLI
 
 <figure class="gdd-hero">
-  <img src="img/3-GHCPAppAndCLI.png" alt="Title slide: Getting hands on with the GitHub App and CLI">
+  <img src="../img/3-GHCPAppAndCLI.png" alt="Title slide: Getting hands on with the GitHub App and CLI">
 </figure>
 
 <div class="gdd-speaker">
@@ -46,7 +46,7 @@ six places, all backed by the same subscription and the same underlying agent:
 </div>
 
 <figure class="gdd-hero">
-  <img src="img/3.1-WaysToUse.png" alt="Diagram: Ways to use GitHub Copilot across six surfaces">
+  <img src="../img/3.1-WaysToUse.png" alt="Diagram: Ways to use GitHub Copilot across six surfaces">
 </figure>
 
 ## Where the two newest surfaces fit
@@ -67,7 +67,7 @@ session to the desktop app with `/app`, delegate the long tail to the cloud
 agent, and review everything back on GitHub. Configuration follows them.
 
 <figure class="gdd-hero">
-  <img src="img/3.2-Surface.png" alt="Diagram: Where the two newest surfaces fit — one runtime across editor, CLI, app, cloud agent and SDK">
+  <img src="../img/3.2-Surface.png" alt="Diagram: Where the two newest surfaces fit — one runtime across editor, CLI, app, cloud agent and SDK">
 </figure>
 
 ## The governance model
@@ -86,7 +86,7 @@ gaps, and each surface has its own switch:
    servers and plugins committed to the repo, or held per user.
 
 <figure class="gdd-hero">
-  <img src="img/3.3-Governance.png" alt="Diagram: the governance model, from enterprise policy down to repository configuration">
+  <img src="../img/3.3-Governance.png" alt="Diagram: the governance model, from enterprise policy down to repository configuration">
 </figure>
 
 ### How to enable each surface
@@ -100,7 +100,7 @@ gaps, and each surface has its own switch:
 | Third-party agents | Partner agents toggle | Claude and Codex enabled per organisation once the enterprise allows them |
 
 <figure class="gdd-hero">
-  <img src="img/3.4-enable.png" alt="Table: how to enable each Copilot surface via organisation settings and policies">
+  <img src="../img/3.4-enable.png" alt="Table: how to enable each Copilot surface via organisation settings and policies">
 </figure>
 
 ## GitHub Copilot CLI
@@ -128,7 +128,7 @@ copilot -p "list my open PRs" --allow-tool='shell(git)'
 Available on Linux, macOS and Windows, with PowerShell 6 or WSL.
 
 <figure class="gdd-hero">
-  <img src="img/3.5-GHCPCLI.png" alt="Slide: GitHub Copilot CLI install and run instructions">
+  <img src="../img/3.5-GHCPCLI.png" alt="Slide: GitHub Copilot CLI install and run instructions">
 </figure>
 
 ## GitHub Copilot app
@@ -148,7 +148,7 @@ on every Copilot plan or with your own key.
 Available on macOS, Windows and Linux.
 
 <figure class="gdd-hero">
-  <img src="img/3.6-GHCPApp.png" alt="Slide: GitHub Copilot app sidebar and availability">
+  <img src="../img/3.6-GHCPApp.png" alt="Slide: GitHub Copilot app sidebar and availability">
 </figure>
 
 ## What has landed recently
@@ -172,7 +172,7 @@ your team works today:
 </div>
 
 <figure class="gdd-hero">
-  <img src="img/3.7-New.png" alt="Slide: What has landed recently across Copilot CLI, Copilot app, and platform/admin">
+  <img src="../img/3.7-New.png" alt="Slide: What has landed recently across Copilot CLI, Copilot app, and platform/admin">
 </figure>
 
 ## Choosing between them
@@ -192,7 +192,7 @@ automations without writing a workflow, or you want a shared visual surface
 through canvases.
 
 <figure class="gdd-hero">
-  <img src="img/3.8-Which.png" alt="Slide: choosing between the Copilot CLI and the Copilot app">
+  <img src="../img/3.8-Which.png" alt="Slide: choosing between the Copilot CLI and the Copilot app">
 </figure>
 
 ## Where to start
@@ -219,5 +219,5 @@ Learn more: [Copilot CLI docs](https://docs.github.com/copilot/concepts/agents/c
 [Enterprise-managed settings](https://docs.github.com/copilot/how-tos/administer-copilot)
 
 <figure class="gdd-hero">
-  <img src="img/3.9-WhereToStart.png" alt="Slide: where to start with Copilot CLI and the GitHub Copilot app, plus documentation links">
+  <img src="../img/3.9-WhereToStart.png" alt="Slide: where to start with Copilot CLI and the GitHub Copilot app, plus documentation links">
 </figure>

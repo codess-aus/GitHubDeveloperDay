@@ -1,7 +1,7 @@
 # Keynote — Agentic Coding: What does it actually mean?
 
 <figure class="gdd-hero">
-  <img src="img/placeholder-hero.svg" alt="Placeholder hero graphic — the keynote slide deck hasn't been added to this site yet">
+  <img src="../img/placeholder-hero.svg" alt="Placeholder hero graphic — the keynote slide deck hasn't been added to this site yet">
   <figcaption>Hero image placeholder — swap in the real keynote title slide once it's available.</figcaption>
 </figure>
 
