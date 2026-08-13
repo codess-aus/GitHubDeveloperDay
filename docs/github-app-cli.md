@@ -228,6 +228,42 @@ Available on macOS, Windows and Linux.
   <img src="../img/3.6-GHCPApp.png" alt="Slide: GitHub Copilot app sidebar and availability">
 </figure>
 
+## Working across branches in parallel with worktrees
+
+Every surface above leans on the same underlying Git feature to run more than
+one thing at once: **git worktrees**. A worktree is a second working
+directory checked out from the same repository, on its own branch, sharing
+one `.git` history — so you can have several branches checked out and built
+independently, side by side, without stashing changes, switching branches,
+or cloning the repo again.
+
+That's exactly why worktrees have become the default unit of isolation for
+coding agents. The Copilot CLI's `/worktree` command spins up an isolated
+tree and conversation for a task; the Copilot app runs each parallel session
+in its own worktree and branch; and this pattern is spreading well beyond
+Copilot itself — **GitHub Desktop 3.6** added native worktree support, so you
+can switch between a main worktree and several linked worktrees from a
+"Current Worktree" menu right in the toolbar, alongside Copilot-powered
+commit message authoring and merge conflict resolution (both now built on
+the same Copilot SDK you saw earlier).
+
+<div class="gdd-feature-grid">
+  <div class="gdd-feature">
+    <h4>Why it matters for agents</h4>
+    <p>An agent working in its own worktree can't accidentally clobber the branch you're actively editing — each session gets a clean, isolated tree to run in.</p>
+  </div>
+  <div class="gdd-feature">
+    <h4>Why it matters for you</h4>
+    <p>Review a hotfix, keep a side-project building, and let an agent iterate on a feature branch — all from the same clone, without stash/switch/clone gymnastics.</p>
+  </div>
+  <div class="gdd-feature">
+    <h4>Where you'll see it</h4>
+    <p>Copilot CLI (<code>/worktree</code>), the Copilot app (one worktree per session), and now GitHub Desktop 3.6 for everyday Git work alongside your agent sessions.</p>
+  </div>
+</div>
+
+Learn more: [GitHub Desktop 3.6: worktrees and deeper Copilot integration](https://github.blog/changelog/2026-06-26-github-desktop-3-6-worktrees-and-deeper-copilot-integration/).
+
 ## What has landed recently
 
 Both surfaces ship weekly. A few changes that are most likely to affect how
