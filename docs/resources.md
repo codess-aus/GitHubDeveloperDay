@@ -37,6 +37,16 @@ references referenced throughout the day.
     <p>Hypervelocity Engineering prompt library for GitHub Copilot — specialised agents, reusable prompts, coding instructions, and validated skills for a repeatable, standards-aligned workflow.</p>
   </li>
   <li>
+    <span class="gdd-cat">Multi-agent</span>
+    <h3><a href="https://docs.github.com/en/copilot/concepts/agents/copilot-cli/rubber-duck" target="_blank" rel="noopener">About the rubber duck agent</a></h3>
+    <p>A built-in critic that reviews Copilot's own plans, code, and tests using a different model — the Advisor pattern from today's keynote, shipped out of the box.</p>
+  </li>
+  <li>
+    <span class="gdd-cat">Automation</span>
+    <h3><a href="https://github.com/github/gh-aw" target="_blank" rel="noopener">GitHub Agentic Workflows (gh-aw)</a></h3>
+    <p>Define AI-powered repository automation in Markdown with YAML frontmatter, compiled into standard, sandboxed GitHub Actions workflows with scoped, validated writes.</p>
+  </li>
+  <li>
     <span class="gdd-cat">CLI</span>
     <h3><a href="https://docs.github.com/copilot/concepts/agents/copilot-cli" target="_blank" rel="noopener">GitHub Copilot CLI docs</a></h3>
     <p>Install and reference guide for the terminal-native Copilot agent — interactive and scripted usage.</p>
