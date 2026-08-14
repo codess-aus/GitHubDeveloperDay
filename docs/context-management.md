@@ -64,6 +64,258 @@ and accurate as a task grows in size and duration.
   files back to an earlier point (without relying purely on Git) so a bad
   branch of exploration doesn't have to be paid for in tokens forever.
 
+## The token efficiency mental model
+
+Not every optimisation is equal, and it helps to separate the ones that cost
+you nothing from the ones that trade away some quality on purpose.
+
+<figure class="gdd-hero">
+  <img src="../img/5.1-tradeoffs.png" alt="Slide: Token efficiency mental model — free wins vs. deliberate tradeoffs, Tier A (zero quality loss) vs Tier B (worth-it tradeoffs)">
+</figure>
+
+- **Tier A — zero quality loss.** Same answers, fewer tokens: maximise
+  prompt caching, offload to subagents, scope `@file` context, trim unused
+  tool definitions, size context deliberately, and carry knowledge across
+  sessions with `/memory`. There's no reason not to do all of these, all the
+  time.
+- **Tier B — worth-it tradeoffs.** These *may* lower quality, so use them
+  deliberately: lower reasoning effort for routine work, a cheaper model for
+  low-stakes turns, and compacting stale history when you no longer need the
+  detail.
+
+### What "compute" actually means for an LLM
+
+An LLM's inference-time compute isn't just hidden reasoning — it breaks down
+into three distinct kinds of tokens, and good outcomes come from balancing
+all three rather than maximising one.
+
+<figure class="gdd-hero">
+  <img src="../img/5.3-buckets.png" alt="Slide: Three token buckets make up test-time compute — thinking tokens, tool-calling tokens, text tokens">
+</figure>
+
+- **Thinking tokens** — the model's internal deliberation, planning, and
+  working through a problem before acting.
+- **Tool-calling tokens** — connecting to the outside world: searching,
+  reading files, running code, taking actions.
+- **Text tokens** — the user-facing output: status updates along the way and
+  the final answer.
+
+### Picking the right model
+
+Choosing a model is a three-way balance, not a single "best" choice:
+
+<figure class="gdd-hero">
+  <img src="../img/5.2-model.png" alt="Slide: Pick the right model around three pillars — quality, latency, cost">
+</figure>
+
+- **Quality** — task completion rate and accuracy on your actual task.
+- **Latency** — response time, critical for customer-facing use cases.
+- **Cost** — a major consideration for most workloads at scale.
+
+Once you know the pillars, the next question is usually a straight
+trade-off between model size and reasoning effort:
+
+<figure class="gdd-hero">
+  <img src="../img/5.4-effort.png" alt="Slide: Smaller model, or bigger model at lower effort? Comparison of bigger-model-low-effort vs smaller-model approaches">
+</figure>
+
+- **Bigger model, low effort** — for intelligence-demanding tasks where
+  speed still matters. Higher raw capability ceiling, can beat a small model
+  even at high effort, and good for hard tasks under time pressure.
+- **Smaller model** — for cheap, fast, high-volume work. Lowest cost per
+  token, fastest time-to-first-token, and best for bulk or latency-critical
+  tasks.
+
+The way to actually choose between them isn't guesswork — it's evals:
+
+<figure class="gdd-hero">
+  <img src="../img/5.5-evals.png" alt="Slide: Pick effort with evals, and read the transcripts — an illustrative effort curve charting performance against tokens, time and cost">
+</figure>
+
+Build an **effort curve**: run evals and chart performance against tokens,
+time, and cost to find where returns start to diminish for your use case.
+Then **inspect the transcripts**, especially at low effort — a lower score
+doesn't always mean the model got dumber. In one Pokémon-playing eval, low
+effort didn't make the model worse at all; it made the model optimise for
+fewer tokens, speedrunning with shortcuts like skipping battles and using
+items strategically to progress faster. Low effort ≠ dumber — it can just
+mean a different (and sometimes smarter) strategy for the token budget it
+was given.
+
+### Maximize prompt caching — the single biggest free lever
+
+Of all the Tier A wins above, prompt caching has the largest, most
+consistent payoff, because it costs you nothing and needs no judgement call.
+
+<figure class="gdd-hero">
+  <img src="../img/5.6-promptcaching.png" alt="Slide: Maximize prompt caching — cached input bills at roughly 10% (Anthropic) and up to 90% off (OpenAI) for identical output">
+</figure>
+
+- Cached input bills at roughly **10% (Anthropic)** and **up to 90% off
+  (OpenAI)** — for the identical output.
+- The win comes from a **stable prefix**: keep the front of your context
+  unchanged across turns so it stays cacheable.
+- Toggling tools or editing early context mid-session busts the cache —
+  avoid it.
+
+!!! note "Same output, a fraction of the input cost"
+    This is the single biggest free lever available to you. There's no
+    quality trade-off — you just have to avoid the handful of actions that
+    invalidate it.
+
+**How it works:** caching is an exact prefix match, hashed and reused. The
+cached prefix is assembled in a fixed order — tools, then system prompt,
+then messages — and changing anything earlier in that chain invalidates
+everything after it.
+
+<figure class="gdd-hero">
+  <img src="../img/5.7-exact.png" alt="Slide: An exact prefix match, hashed and reused — tools, system, messages order, with cache hit, cache miss, and exact-only behaviour">
+</figure>
+
+- **Cache hit** — the matched prefix is billed at the cheap cache-read rate.
+- **Cache miss** — the full prompt is processed, and the prefix is written
+  to cache for next time.
+- **Exact only** — only an exact prefix match counts; a single early change
+  re-bills the whole prefix.
+
+Caches also don't live forever, and the lifetime varies by provider:
+
+<figure class="gdd-hero">
+  <img src="../img/5.8-caches.png" alt="Slide: Caches go cold after a few idle minutes — Anthropic 5 min default, OpenAI in-memory 5–10 min idle, OpenAI extended up to 24 hours">
+</figure>
+
+- **Anthropic** — 5 minute default, refreshed free on every hit, or 1 hour
+  at 2x the write price with `ttl: "1h"`.
+- **OpenAI (in-memory)** — 5–10 minute idle, maximum 1 hour, the default for
+  all requests.
+- **OpenAI extended** — up to 24 hours, on GPT-5.4, GPT-5.5, and newer.
+
+The practical implication: **work in bursts.** A cache goes cold after a few
+idle minutes — a long coffee break means the next turn pays full price
+again, except on models with 24-hour extended retention.
+
+This is exactly the mechanism behind the VS Code and GitHub Copilot
+production numbers covered earlier on this page — the same caching controls,
+tuned and measured at scale:
+
+<figure class="gdd-hero">
+  <img src="../img/5.9-harness.png" alt="Slide: The same levers, measured at scale — VS Code Copilot production numbers for OpenAI extended caching (+919%) and Anthropic smarter breakpoints (~94%)">
+</figure>
+
+- **OpenAI extended caching** — a **+919% relative increase** in cache-hit
+  rate after 40–60 minute gaps (GPT-5.4). `prompt_cache_retention: "24h"`
+  moves the cache to roomier GPU-local storage, staying warm up to 24 hours
+  versus the 5–10 minute default — long breaks no longer cold-start.
+- **Anthropic smarter breakpoints** — **~94%** cache hit rate on agentic
+  workloads. Up to 4 `cache_control` breakpoints anchored at the most stable
+  boundaries, with rolling anchors so that if the freshest one misses, an
+  older one still serves a hit.
+- **Why it keeps working** — deferred tools (from tool search) sit outside
+  the prefix, so the cached prefix is never rewritten and the caching gains
+  hold across turns.
+
+Knowing what breaks a cache is just as important as knowing what builds one:
+
+<figure class="gdd-hero">
+  <img src="../img/5.10-switches.png" alt="Slide: What busts the cache — table of actions and why each invalidates the cache">
+</figure>
+
+| Action | Why it busts the cache |
+| --- | --- |
+| Switching model or effort level | Changes the request fingerprint / system layer |
+| Adding/removing an MCP server or toggling tools | Tool defs are the first cache layer — everything after is invalidated |
+| Editing custom instructions | Part of the system layer |
+| `/rewind`, `/undo`, editing an earlier turn | Rewrites history before the cache point |
+| `/compact` | Rewrites the whole transcript → new prefix (cold cache) |
+| Long idle gap (> ~5–10 min) | TTL expiry evicts the prefix (except GPT-5.5's 24h retention) |
+
+Put together as a checklist for your own Copilot CLI sessions:
+
+<figure class="gdd-hero">
+  <img src="../img/5.11-practicalchecks.png" alt="Slide: Copilot CLI checklist — how to maximize cache hits, seven numbered practices">
+</figure>
+
+1. **Lock your config** — pick model, effort, context tier, MCP servers and
+   tools up front, don't change them mid-session.
+2. **Front-load stable context** — add big reference files early with
+   `@file` and reuse across turns, read from cache at ~10% cost.
+3. **Append, don't edit** — ask follow-ups as new turns; avoid `/rewind` and
+   `/undo` unless truly needed.
+4. **Keep the session warm** — work in focused bursts; don't leave it idle
+   past the TTL.
+5. **Defer `/compact`** — it busts the cache, so choose the right context
+   size and only compact when history is genuinely stale.
+6. **Stable, concise instructions** — a short `copilot-instructions.md` you
+   don't edit mid-session stays cached.
+7. **Verify it's working** — run `/context` and `/usage`, watch cached vs
+   fresh tokens; a rising cache-hit share means you're winning.
+
+### Context window mechanics and context rot
+
+Zooming out from caching specifically: every agent turn is really two loops
+stacked on top of each other, and understanding the shape of that loop
+explains why caching (and compaction) matter so much.
+
+<figure class="gdd-hero">
+  <img src="../img/5.12-loopd.png" alt="Diagram: Context Window & Tokens — first loop (system prompt & tools, prompt, file, response) and second loop with cache input tokens">
+</figure>
+
+On the first loop, the model processes system prompt & tools, your prompt,
+file content, and produces a response — all counted as input and output
+tokens. On the second loop, everything from the first loop becomes **cache
+input tokens** (not guaranteed to hit), with only the new prompt, file, and
+response counted as fresh input/output. This is exactly why a stable prefix
+matters: the bigger that reusable first chunk, the cheaper every subsequent
+turn becomes.
+
+But a bigger context window isn't free of downsides even when it's cached —
+models don't treat all tokens in a long context equally:
+
+<figure class="gdd-hero">
+  <img src="../img/5.13-contextrot.png" alt="Slide: Context Rot — just because you can fill the context window doesn't mean you should. Lost in the Middle and Recency Bias diagrams">
+</figure>
+
+Just because you *can* fill the context window, doesn't mean you *should*.
+
+- **Lost in the Middle** (when context is under ~50% full) — models bias
+  attention toward tokens at the beginning and end of the context; content
+  in the middle can effectively decay and get overlooked.
+- **Recency Bias** (when context is over ~50% full) — models increasingly
+  bias toward the end of the context, at the expense of earlier information.
+
+(Reference: [productalk.org/context-rot](https://www.producttalk.org/context-rot/))
+
+The practical fix for both problems is the same one already in your Tier A
+toolkit — keep unrelated exploration out of your main thread entirely:
+
+<figure class="gdd-hero">
+  <img src="../img/5.14-subagents.png" alt="Slide: Offload to subagents — keep context lean and heavy tool output out of the main thread. Subagents and context tier">
+</figure>
+
+- **Subagents** — push exploration and side-quests to explore/task agents.
+  They run in isolated context and return only a summary, so the big
+  intermediate reasoning never lands in your main thread.
+- **Context tier** — use `long_context` only when a task truly needs it.
+  Keep auto-compaction **on** (threshold ~0.80) — don't disable it; let it
+  shed stale history for you rather than fighting it.
+
+### Why this matters beyond the token bill
+
+Token efficiency isn't just a cost story — engaged, efficient Copilot usage
+correlates with meaningfully better delivery outcomes:
+
+<figure class="gdd-hero">
+  <img src="../img/5.15-metrics.png" alt="Slide: Copilot impact dashboard — adoption cohorts and adoption multiplier for code shipped and time to merge pull request">
+</figure>
+
+Across adoption cohorts — from passive users through code-first, agent-first,
+and multi-agent phases — pull requests per user per month climb sharply
+(1.8 → 5.9 → 8.7 → 23.5), while median PR merge time falls. Comparing
+engaged Copilot users to passive users over the same period: **3.3x more
+PRs merged** and **2.4x faster time to merge**. Efficient context and token
+usage is what makes it practical to sustain that level of engagement without
+the cost or latency spiralling alongside it.
+
 ## Cost and performance follow context
 
 Every extra token in context is a token that has to be processed on every
