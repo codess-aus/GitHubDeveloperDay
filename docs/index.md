@@ -1,4 +1,4 @@
-# GitHub Developer Day — Perth
+# GitHub Developer Day - Perth
 
 <figure class="gdd-hero">
   <img src="img/1-hero-developer-day.png" alt="GitHub Copilot mascot waving, with the message 'Let's make Developer Day awesome! Learn, Connect, Build.'">
@@ -6,7 +6,7 @@
 
 ## Welcome 👋
 
-This is the companion site for **GitHub Developer Day Perth** — a hands-on look at
+This is the companion site for **GitHub Developer Day Perth** - a hands-on look at
 agentic coding with GitHub Copilot: what it means, how to get productive with the
 GitHub App and CLI, how to manage context as sessions grow, and how to build on top
 of it all with the GitHub Copilot SDK and Microsoft Foundry.
@@ -16,14 +16,14 @@ write-up than you'll see on stage, and links to go further after today.
 
 !!! tip "How to use this site"
     Use the navigation tabs above (or the menu on mobile) to jump straight to a
-    session. Toggle **light/dark mode** with the sun/moon icon in the top bar —
+    session. Toggle **light/dark mode** with the sun/moon icon in the top bar -
     your preference is remembered automatically.
 
 ## Agenda
 
 <ul class="gdd-agenda">
   <li>
-    <span><a href="keynote/">Keynote: Agentic Coding — What does it actually mean?</a></span>
+    <span><a href="keynote/">Keynote: Agentic Coding - What does it actually mean?</a></span>
   </li>
   <li>
     <span><a href="github-app-cli/">Getting hands on with the GitHub App and CLI</a></span>
@@ -53,7 +53,7 @@ write-up than you'll see on stage, and links to go further after today.
     <div class="gdd-body">
       <span class="gdd-tag">Hands on</span>
       <h3>Getting hands on with the GitHub App and CLI</h3>
-      <p>Six surfaces, one Copilot subscription — install the CLI, tour the desktop app, and see how governance flows down.</p>
+      <p>Six surfaces, one Copilot subscription - install the CLI, tour the desktop app, and see how governance flows down.</p>
     </div>
   </a>
 
@@ -78,5 +78,5 @@ write-up than you'll see on stage, and links to go further after today.
 
 ## Want to keep exploring?
 
-Head to the [**Resources**](resources.md) page for the full list of links — Awesome
+Head to the [**Resources**](resources.md) page for the full list of links - Awesome
 Copilot, the Copilot SDK, the GitHub Copilot App, Spec Kit, and more.

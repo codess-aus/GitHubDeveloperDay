@@ -1,7 +1,7 @@
-# Keynote — Agentic Coding: What does it actually mean?
+# Keynote - Agentic Coding: What does it actually mean?
 
 <figure class="gdd-hero">
-  <img src="../img/2-hero-agentic.png" alt="Title slide: Agentic Coding — What does it actually mean?">
+  <img src="../img/2-hero-agentic.png" alt="Title slide: Agentic Coding - What does it actually mean?">
 </figure>
 
 <div class="gdd-speaker">
@@ -20,9 +20,9 @@ does all of that with a level of autonomy that used to require a human at the
 keyboard.
 
 That's the "vibe shift" at the heart of this keynote: **you are not behind,
-you are exactly where you need to be.** The skills that make a good engineer —
+you are exactly where you need to be.** The skills that make a good engineer -
 reading code critically, understanding systems, thinking about risk and
-blast radius — are *more* relevant than ever, not less. Agentic coding doesn't
+blast radius - are *more* relevant than ever, not less. Agentic coding doesn't
 remove the need for engineering judgement; it moves that judgement earlier,
 into how you scope, supervise, and review the agent's work.
 
@@ -33,7 +33,7 @@ Strip away the marketing and an agent is a loop:
 <div class="gdd-feature-grid">
   <div class="gdd-feature">
     <h4>1. Perceive</h4>
-    <p>Read the repository, the issue, the terminal output, the test failures — whatever context it's been given.</p>
+    <p>Read the repository, the issue, the terminal output, the test failures - whatever context it's been given.</p>
   </div>
   <div class="gdd-feature">
     <h4>2. Reason</h4>
@@ -41,7 +41,7 @@ Strip away the marketing and an agent is a loop:
   </div>
   <div class="gdd-feature">
     <h4>3. Act</h4>
-    <p>Call a tool — run a command, edit a file, open a PR, query an API — inside the permissions it's been granted.</p>
+    <p>Call a tool - run a command, edit a file, open a PR, query an API - inside the permissions it's been granted.</p>
   </div>
   <div class="gdd-feature">
     <h4>4. Observe</h4>
@@ -66,14 +66,14 @@ Each one loads differently and is suited to a different job:
 
 | Primitive | Loading | Best for |
 | --- | --- | --- |
-| **Always-on instructions** | Every session | Codebase guardrails — the persistent, passive rules the whole team agrees on |
+| **Always-on instructions** | Every session | Codebase guardrails - the persistent, passive rules the whole team agrees on |
 | **File-based instructions** | Pattern / description match | Area-specific rules, e.g. "here's how we write C#" or "here's how our CSS and test files look" |
-| **Prompts (slash commands)** | User invokes | One-shot workflows — the active trigger a person fires deliberately |
-| **Skills** | Description match → on-demand | Reusable, on-demand expertise — bundled scripts, templates and resources that load only when relevant |
-| **Custom agents / chat modes** | Top-level or as subagent | Constrained workflows — putting the agent into a specific mindset, like Plan mode or a conversational Interactive mode |
-| **MCP** | Session start | External gateways — the bridge that lets an agent securely reach out to systems like Azure and bring data back |
+| **Prompts (slash commands)** | User invokes | One-shot workflows - the active trigger a person fires deliberately |
+| **Skills** | Description match → on-demand | Reusable, on-demand expertise - bundled scripts, templates and resources that load only when relevant |
+| **Custom agents / chat modes** | Top-level or as subagent | Constrained workflows - putting the agent into a specific mindset, like Plan mode or a conversational Interactive mode |
+| **MCP** | Session start | External gateways - the bridge that lets an agent securely reach out to systems like Azure and bring data back |
 
-The first five give the agent rules, expertise, mindset, and reach — but
+The first five give the agent rules, expertise, mindset, and reach - but
 they're all things *you* configure up front. The sixth primitive is
 different: **memory** is the first one the agent writes back to itself.
 
@@ -85,7 +85,7 @@ different: **memory** is the first one the agent writes back to itself.
 > self-learning agents that evolve and improve based on the tasks they're
 > working on and their own experience."
 
-Memory isn't personal notes — it's a shared substrate for learning across a
+Memory isn't personal notes - it's a shared substrate for learning across a
 multi-agent environment, built from three sources:
 
 <div class="gdd-feature-grid">
@@ -104,7 +104,7 @@ multi-agent environment, built from three sources:
 </div>
 
 <figure class="gdd-hero">
-  <img src="../img/2.3-agentslearn.png" alt="Slide: What agents should learn — memory isn't personal notes, it's a shared substrate for learning across a multi-agent environment, drawn from tasks, environments, and other agents">
+  <img src="../img/2.3-agentslearn.png" alt="Slide: What agents should learn - memory isn't personal notes, it's a shared substrate for learning across a multi-agent environment, drawn from tasks, environments, and other agents">
 </figure>
 
 In practice, that comes down to two kinds of memory, saved in two different
@@ -118,12 +118,12 @@ agent rediscover every time:
   </div>
   <div class="gdd-feature">
     <h4>User-level preferences</h4>
-    <p>How you personally like Copilot to work — style, tools, and workflow habits. Private to you, carried across every repository.</p>
+    <p>How you personally like Copilot to work - style, tools, and workflow habits. Private to you, carried across every repository.</p>
   </div>
 </div>
 
 <figure class="gdd-hero">
-  <img src="../img/2.4-2kinds.png" alt="Slide: Two kinds of memory, two ways to save — repository-level facts shared with the team, and user-level preferences private and carried across every repository">
+  <img src="../img/2.4-2kinds.png" alt="Slide: Two kinds of memory, two ways to save - repository-level facts shared with the team, and user-level preferences private and carried across every repository">
 </figure>
 
 ## The agent spectrum
@@ -131,67 +131,67 @@ agent rediscover every time:
 Not all agents are equal, and your posture should match the level of autonomy
 in play:
 
-- **Assisted** — suggestions only, human types every change (classic
+- **Assisted** - suggestions only, human types every change (classic
   autocomplete).
-- **Supervised** — the agent proposes a batch of changes, a human approves
+- **Supervised** - the agent proposes a batch of changes, a human approves
   each tool call or diff before it lands.
-- **Delegated** — the agent runs a scoped task end-to-end (e.g. "fix this
+- **Delegated** - the agent runs a scoped task end-to-end (e.g. "fix this
   failing test") and opens a PR for review.
-- **Autonomous / multi-agent** — multiple agents coordinate on longer-running
+- **Autonomous / multi-agent** - multiple agents coordinate on longer-running
   work with minimal human intervention, checked by policy and CI rather than
   a person watching every step.
 
 The further right you move on that spectrum, the more your security,
-review, and audit practices need to catch up — which is exactly what the
+review, and audit practices need to catch up - which is exactly what the
 rest of today's sessions cover.
 
 ## Two multi-agent patterns worth knowing
 
-"Autonomous / multi-agent" isn't one thing — it's at least two genuinely
+"Autonomous / multi-agent" isn't one thing - it's at least two genuinely
 different shapes, and each flips a different variable to get more out of the
 same task. Both patterns pair a **frontier model** (expensive, high
-capability) with a **lightweight model** (cheap, fast) — they just decide
+capability) with a **lightweight model** (cheap, fast) - they just decide
 differently which one is in charge.
 
-### Pattern 1 · Advisor — the cheap model runs the show
+### Pattern 1 · Advisor - the cheap model runs the show
 
 This pattern flips the assumption most people have: the expensive model
 isn't the one driving. The cheap model runs the main loop and calls a
-frontier model only when it needs to — once before it commits to a plan,
+frontier model only when it needs to - once before it commits to a plan,
 once after, to mark its own homework.
 
 <figure class="gdd-hero">
-  <img src="../img/2.5-advisor.png" alt="Diagram: Pattern 01 Advisor — frontier model advises, lightweight model works. Executor (lightweight model) runs every turn, consults an Advisor (frontier model) for judgement calls, which returns advice only and never edits.">
+  <img src="../img/2.5-advisor.png" alt="Diagram: Pattern 01 Advisor - frontier model advises, lightweight model works. Executor (lightweight model) runs every turn, consults an Advisor (frontier model) for judgement calls, which returns advice only and never edits.">
 </figure>
 
 1. **The Executor runs every turn.** A lightweight model understands what
    the code, design, or proposal is trying to accomplish, how it integrates
    with the rest of the system, and what assumptions exist.
-2. **When it hits a judgement call** — is this plan sound, did I actually fix
-   the bug — **it consults.** It looks for bugs, logic errors, security
+2. **When it hits a judgement call** - is this plan sound, did I actually fix
+   the bug - **it consults.** It looks for bugs, logic errors, security
    vulnerabilities, design flaws, anti-patterns, performance bottlenecks, and
    other problems that genuinely matter to the success of the task.
 3. **The Advisor returns judgement only.** It states the issue, its impact,
-   and a concrete suggested change — it does not act.
+   and a concrete suggested change - it does not act.
 4. **The Executor applies that advice** and acts accordingly.
 5. **Result:** improved results, with a fraction of the frontier model's
    bill.
 
 Copilot ships this pattern out of the box as the built-in **rubber-duck
 agent**: it runs on a different model from the one driving your session, and
-a different model family brings a genuinely complementary perspective — the
+a different model family brings a genuinely complementary perspective - the
 critic is less likely to share the same blind spots as the model that
 produced the work.
 
 Learn more: [About the rubber duck agent](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/rubber-duck).
 
-### Pattern 2 · Orchestrator — the frontier model runs the team
+### Pattern 2 · Orchestrator - the frontier model runs the team
 
 The second pattern inverts the first: the frontier model stays in charge and
 delegates the legwork to a team of cheap workers running in parallel.
 
 <figure class="gdd-hero">
-  <img src="../img/2.6-orchestrator.png" alt="Diagram: Pattern 02 Orchestrator — frontier model runs the team. Orchestrator plans and synthesises, delegating to three Worker subagents, each with its own context window, that report back distilled findings.">
+  <img src="../img/2.6-orchestrator.png" alt="Diagram: Pattern 02 Orchestrator - frontier model runs the team. Orchestrator plans and synthesises, delegating to three Worker subagents, each with its own context window, that report back distilled findings.">
 </figure>
 
 1. **The Orchestrator plans.** It takes the problem and breaks it into
@@ -199,20 +199,20 @@ delegates the legwork to a team of cheap workers running in parallel.
 2. **It delegates.** One call per sub-question, all fired off in parallel,
    each pinned to a lightweight model. Each subagent has its own context
    window, which can process information that isn't relevant to the main
-   agent — so parts of the work get offloaded without cluttering the main
+   agent - so parts of the work get offloaded without cluttering the main
    agent's context window, and it can focus on higher-level planning and
    coordination.
 3. **Workers report back** with **distilled findings**, not raw context. For
    example, fifty thousand tokens' worth of source files get read by the
-   cheap model and come back as a paragraph — the expensive model never pays
+   cheap model and come back as a paragraph - the expensive model never pays
    for that reading.
 4. **The Orchestrator synthesises**, and **5) delivers one coherent answer.**
 
-**Why it pays — two independent wins that build on each other:**
+**Why it pays - two independent wins that build on each other:**
 
-- **Cost** — the token-heavy reading bills at the worker rate, not the
+- **Cost** - the token-heavy reading bills at the worker rate, not the
   frontier rate.
-- **Latency** — the workers run concurrently, so three workers on three
+- **Latency** - the workers run concurrently, so three workers on three
   sub-questions takes roughly one worker's time, not three.
 
 Measured against a solo frontier agent on the same question with the same
@@ -232,7 +232,7 @@ Agents aren't just showing up at the coding step. Expect to see them across
 the whole delivery lifecycle: triaging issues, writing and reviewing PRs,
 investigating incidents, updating dependencies, and summarising release
 notes. Each of those stages has its own tools, its own blast radius, and its
-own governance question — "what is this agent allowed to touch, and who is
+own governance question - "what is this agent allowed to touch, and who is
 accountable if it gets it wrong?"
 
 !!! note "Where this leads"

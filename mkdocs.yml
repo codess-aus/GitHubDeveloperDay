@@ -1,6 +1,6 @@
 site_name: GitHub Developer Day Perth
 site_description: >-
-  Companion site for GitHub Developer Day Perth — session summaries, deeper
+  Companion site for GitHub Developer Day Perth - session summaries, deeper
   dives, and resources for agentic coding with GitHub Copilot.
 site_url: https://codess-aus.github.io/GitHubDeveloperDay/
 repo_name: codess-aus/GitHubDeveloperDay
@@ -66,7 +66,7 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Agenda:
-      - Keynote — Agentic Coding: keynote.md
+      - Keynote - Agentic Coding: keynote.md
       - GitHub App & CLI: github-app-cli.md
       - Context Management & Optimization: context-management.md
       - GitHub SDK & Microsoft Foundry: sdk-foundry.md

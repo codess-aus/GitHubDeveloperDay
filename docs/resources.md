@@ -9,7 +9,7 @@ references referenced throughout the day.
   <li>
     <span class="gdd-cat">Certification</span>
     <h3><a href="https://learn.github.com/certifications" target="_blank" rel="noopener">GitHub Certifications</a></h3>
-    <p>Validate your GitHub skills with official certifications, including GitHub Copilot — a great next step after today.</p>
+    <p>Validate your GitHub skills with official certifications, including GitHub Copilot - a great next step after today.</p>
   </li>
   <li>
     <span class="gdd-cat">Curated list</span>
@@ -19,7 +19,7 @@ references referenced throughout the day.
   <li>
     <span class="gdd-cat">SDK</span>
     <h3><a href="https://github.com/github/copilot" target="_blank" rel="noopener">GitHub Copilot SDK</a></h3>
-    <p>Embed the Copilot agent runtime in your own apps and services — TypeScript, Python, Go, .NET, Rust and Java.</p>
+    <p>Embed the Copilot agent runtime in your own apps and services - TypeScript, Python, Go, .NET, Rust and Java.</p>
   </li>
   <li>
     <span class="gdd-cat">Desktop app</span>
@@ -34,22 +34,22 @@ references referenced throughout the day.
   <li>
     <span class="gdd-cat">Platform engineering</span>
     <h3><a href="https://azure.github.io/git-ape/" target="_blank" rel="noopener">Git-Ape</a></h3>
-    <p>An agent-first take on platform engineering for Azure — natural-language intent to IaC, with a blocking security gate, cost estimation, WAF assessment, and drift detection built in, instead of a catalogue of pinned modules.</p>
+    <p>An agent-first take on platform engineering for Azure - natural-language intent to IaC, with a blocking security gate, cost estimation, WAF assessment, and drift detection built in, instead of a catalogue of pinned modules.</p>
   </li>
   <li>
     <span class="gdd-cat">Playbook</span>
     <h3><a href="https://github.com/xavierxmorris/vscode-engineering-playbook" target="_blank" rel="noopener">VS Code Engineering Playbook</a></h3>
-    <p>Lessons extracted from microsoft/vscode — how one of the world's largest TypeScript codebases achieves fast tests, strict linting, and tight CI feedback.</p>
+    <p>Lessons extracted from microsoft/vscode - how one of the world's largest TypeScript codebases achieves fast tests, strict linting, and tight CI feedback.</p>
   </li>
   <li>
     <span class="gdd-cat">Framework</span>
     <h3><a href="https://github.com/codess-aus/hve-core" target="_blank" rel="noopener">HVE Core</a></h3>
-    <p>Hypervelocity Engineering prompt library for GitHub Copilot — specialised agents, reusable prompts, coding instructions, and validated skills for a repeatable, standards-aligned workflow.</p>
+    <p>Hypervelocity Engineering prompt library for GitHub Copilot - specialised agents, reusable prompts, coding instructions, and validated skills for a repeatable, standards-aligned workflow.</p>
   </li>
   <li>
     <span class="gdd-cat">Multi-agent</span>
     <h3><a href="https://docs.github.com/en/copilot/concepts/agents/copilot-cli/rubber-duck" target="_blank" rel="noopener">About the rubber duck agent</a></h3>
-    <p>A built-in critic that reviews Copilot's own plans, code, and tests using a different model — the Advisor pattern from today's keynote, shipped out of the box.</p>
+    <p>A built-in critic that reviews Copilot's own plans, code, and tests using a different model - the Advisor pattern from today's keynote, shipped out of the box.</p>
   </li>
   <li>
     <span class="gdd-cat">Automation</span>
@@ -59,7 +59,7 @@ references referenced throughout the day.
   <li>
     <span class="gdd-cat">CLI</span>
     <h3><a href="https://docs.github.com/copilot/concepts/agents/copilot-cli" target="_blank" rel="noopener">GitHub Copilot CLI docs</a></h3>
-    <p>Install and reference guide for the terminal-native Copilot agent — interactive and scripted usage.</p>
+    <p>Install and reference guide for the terminal-native Copilot agent - interactive and scripted usage.</p>
   </li>
   <li>
     <span class="gdd-cat">Best practices</span>
@@ -74,32 +74,32 @@ references referenced throughout the day.
   <li>
     <span class="gdd-cat">Autonomy</span>
     <h3><a href="https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/delegate-tasks-to-cca" target="_blank" rel="noopener">Delegating tasks to Copilot</a></h3>
-    <p>Autopilot mode versus <code>/delegate</code> — two ways to hand a task off to Copilot and let it run further ahead on its own.</p>
+    <p>Autopilot mode versus <code>/delegate</code> - two ways to hand a task off to Copilot and let it run further ahead on its own.</p>
   </li>
   <li>
     <span class="gdd-cat">Git workflow</span>
     <h3><a href="https://github.blog/changelog/2026-06-26-github-desktop-3-6-worktrees-and-deeper-copilot-integration/" target="_blank" rel="noopener">GitHub Desktop 3.6: worktrees and Copilot integration</a></h3>
-    <p>Native git worktree support in GitHub Desktop, plus Copilot-powered commit authoring and merge conflict resolution — the same isolation pattern used by the Copilot CLI and app.</p>
+    <p>Native git worktree support in GitHub Desktop, plus Copilot-powered commit authoring and merge conflict resolution - the same isolation pattern used by the Copilot CLI and app.</p>
   </li>
   <li>
     <span class="gdd-cat">Cost &amp; efficiency</span>
     <h3><a href="https://github.blog/ai-and-ml/github-copilot/improving-token-efficiency-in-github-agentic-workflows/" target="_blank" rel="noopener">Improving token efficiency in GitHub Agentic Workflows</a></h3>
-    <p>How GitHub instrumented, audited, and optimized token usage across its own production agentic workflows — unused tools, deterministic data-gathering, and an Effective Tokens cost metric.</p>
+    <p>How GitHub instrumented, audited, and optimized token usage across its own production agentic workflows - unused tools, deterministic data-gathering, and an Effective Tokens cost metric.</p>
   </li>
   <li>
     <span class="gdd-cat">Engineering</span>
     <h3><a href="https://code.visualstudio.com/blogs/2026/06/17/improving-token-efficiency-in-github-copilot" target="_blank" rel="noopener">Improving token efficiency in GitHub Copilot (VS Code)</a></h3>
-    <p>How the VS Code team cut token usage at the harness level with extended prompt caching, smarter cache breakpoints, and tool search — with real experiment numbers for OpenAI and Anthropic models.</p>
+    <p>How the VS Code team cut token usage at the harness level with extended prompt caching, smarter cache breakpoints, and tool search - with real experiment numbers for OpenAI and Anthropic models.</p>
   </li>
   <li>
     <span class="gdd-cat">Tutorial</span>
     <h3><a href="https://docs.github.com/en/copilot/tutorials/optimize-ai-usage" target="_blank" rel="noopener">Optimizing your AI usage</a></h3>
-    <p>Eight practical habits to reduce AI credit spend — model choice, prompt scoping, context hygiene, cache preservation, session limits, and deterministic guardrails.</p>
+    <p>Eight practical habits to reduce AI credit spend - model choice, prompt scoping, context hygiene, cache preservation, session limits, and deterministic guardrails.</p>
   </li>
   <li>
     <span class="gdd-cat">Protocol</span>
     <h3><a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener">Model Context Protocol (MCP)</a></h3>
-    <p>The open protocol behind Copilot's tool integrations — connect your own data sources and tools to any compatible agent.</p>
+    <p>The open protocol behind Copilot's tool integrations - connect your own data sources and tools to any compatible agent.</p>
   </li>
   <li>
     <span class="gdd-cat">Platform</span>
@@ -135,5 +135,5 @@ references referenced throughout the day.
 
 !!! tip "Missing something?"
     If there's a tool, SDK, or doc you think belongs on this page, open a
-    pull request against this repository — this list will keep growing after
+    pull request against this repository - this list will keep growing after
     Developer Day.
