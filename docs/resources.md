@@ -32,6 +32,11 @@ references referenced throughout the day.
     <p>A spec-driven development toolkit that helps you turn ideas into specs and specs into working software with an agent.</p>
   </li>
   <li>
+    <span class="gdd-cat">Platform engineering</span>
+    <h3><a href="https://azure.github.io/git-ape/" target="_blank" rel="noopener">Git-Ape</a></h3>
+    <p>An agent-first take on platform engineering for Azure — natural-language intent to IaC, with a blocking security gate, cost estimation, WAF assessment, and drift detection built in, instead of a catalogue of pinned modules.</p>
+  </li>
+  <li>
     <span class="gdd-cat">Playbook</span>
     <h3><a href="https://github.com/xavierxmorris/vscode-engineering-playbook" target="_blank" rel="noopener">VS Code Engineering Playbook</a></h3>
     <p>Lessons extracted from microsoft/vscode — how one of the world's largest TypeScript codebases achieves fast tests, strict linting, and tight CI feedback.</p>
