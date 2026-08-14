@@ -1,9 +1,9 @@
-# GitHub Developer Day — Perth (companion site)
+# GitHub Developer Day - Perth (companion site)
 
 Companion website for **GitHub Developer Day Perth**, built with
 [MkDocs](https://www.mkdocs.org/) and the
 [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) theme.
-It turns the day's agenda into readable, accessible pages — one per session —
+It turns the day's agenda into readable, accessible pages - one per session -
 with hero images, deeper write-ups than fit on a slide, and a resources page
 to keep exploring afterwards.
 
@@ -25,7 +25,7 @@ Then open <http://127.0.0.1:8000>.
 mkdocs.yml            # site configuration, nav, theme
 docs/
   index.md            # home page
-  keynote.md           # Keynote — Agentic Coding
+  keynote.md           # Keynote - Agentic Coding
   github-app-cli.md     # Getting hands on with the GitHub App and CLI
   context-management.md # Context management and optimization
   sdk-foundry.md        # GitHub SDK and Microsoft Foundry
@@ -37,7 +37,7 @@ assets/                   # original source slide exports
 ```
 
 Pages without a source slide yet (the Keynote and Context Management
-sessions) use `docs/img/placeholder-hero.svg` as a hero placeholder — swap in
+sessions) use `docs/img/placeholder-hero.svg` as a hero placeholder - swap in
 the real slide image and update the `<img src>` in the corresponding page
 once it's available.
 

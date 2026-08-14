@@ -13,7 +13,7 @@
 
 ## Six surfaces, one Copilot subscription
 
-GitHub Copilot isn't a single tool anymore — it's a runtime that shows up in
+GitHub Copilot isn't a single tool anymore - it's a runtime that shows up in
 six places, all backed by the same subscription and the same underlying agent:
 
 <div class="gdd-feature-grid">
@@ -54,18 +54,18 @@ they share **one runtime**: custom instructions, agent skills, MCP servers,
 custom agents, hooks, plugins and session history are configured once and
 shared across surfaces.
 
-- **Editor** — inline authoring and agent mode.
-- **Copilot CLI** — terminal agent, scriptable.
-- **Copilot app** — desktop control centre.
-- **Cloud agent** — async work on GitHub-hosted VMs.
-- **Copilot SDK** — your own tools and automations.
+- **Editor** - inline authoring and agent mode.
+- **Copilot CLI** - terminal agent, scriptable.
+- **Copilot app** - desktop control centre.
+- **Cloud agent** - async work on GitHub-hosted VMs.
+- **Copilot SDK** - your own tools and automations.
 
 Why this matters: a developer can plan in the terminal, hand the same
 session to the desktop app with `/app`, delegate the long tail to the cloud
 agent, and review everything back on GitHub. Configuration follows them.
 
 <figure class="gdd-hero">
-  <img src="../img/3.2-Surface.png" alt="Diagram: Where the two newest surfaces fit — one runtime across editor, CLI, app, cloud agent and SDK">
+  <img src="../img/3.2-Surface.png" alt="Diagram: Where the two newest surfaces fit - one runtime across editor, CLI, app, cloud agent and SDK">
 </figure>
 
 ## The governance model
@@ -73,14 +73,14 @@ agent, and review everything back on GitHub. Configuration follows them.
 Policy flows down. Enterprise settings win, organisation settings fill the
 gaps, and each surface has its own switch:
 
-1. **Enterprise policies** — set once for every organisation. An enterprise
+1. **Enterprise policies** - set once for every organisation. An enterprise
    choice cannot be overridden lower down.
-2. **Organisation policies** — enable or disable each surface and feature for
+2. **Organisation policies** - enable or disable each surface and feature for
    licensed members where the enterprise allows it.
-3. **Enterprise-managed settings** — `managed-settings.json` distributed
+3. **Enterprise-managed settings** - `managed-settings.json` distributed
    server-side, by MDM, or as a file. Controls client behaviour such as
    plugins, permissions and sandbox floors.
-4. **Repository and user configuration** — custom instructions, skills, MCP
+4. **Repository and user configuration** - custom instructions, skills, MCP
    servers and plugins committed to the repo, or held per user.
 
 <figure class="gdd-hero">
@@ -107,12 +107,12 @@ A terminal-native coding agent that reads your repository, runs commands
 with your approval, and talks to GitHub.com. Generally available since
 February 2026, on every Copilot plan.
 
-- **Two interfaces** — interactive with `copilot`, or scripted with `copilot -p`.
-- **Three modes** — standard, plan and autopilot, cycled with `Shift+Tab`.
-- **GitHub built in** — the GitHub MCP server ships preconfigured.
-- **Infinite sessions** — auto-compaction near 95% of the context limit.
-- **Approval controls** — per tool, per session, or with allow/deny flags.
-- **Extensible** — instructions, skills, MCP, hooks, plugins, custom agents.
+- **Two interfaces** - interactive with `copilot`, or scripted with `copilot -p`.
+- **Three modes** - standard, plan and autopilot, cycled with `Shift+Tab`.
+- **GitHub built in** - the GitHub MCP server ships preconfigured.
+- **Infinite sessions** - auto-compaction near 95% of the context limit.
+- **Approval controls** - per tool, per session, or with allow/deny flags.
+- **Extensible** - instructions, skills, MCP, hooks, plugins, custom agents.
 
 ```bash
 npm install -g @github/copilot
@@ -131,8 +131,8 @@ Available on Linux, macOS and Windows, with PowerShell 6 or WSL.
 
 ## Cloud and local sandboxes
 
-As Copilot CLI takes more actions on your behalf — running shell commands,
-editing files, calling MCP servers — it needs somewhere safe to do that
+As Copilot CLI takes more actions on your behalf - running shell commands,
+editing files, calling MCP servers - it needs somewhere safe to do that
 work. **Sandboxes** are the execution platform behind that: isolated
 environments that let Copilot interact with your code and tools securely,
 either on your own machine or in a fully isolated cloud environment.
@@ -152,7 +152,7 @@ either on your own machine or in a fully isolated cloud environment.
 </div>
 
 **Local sandboxing** is powered by Microsoft eXecution Container (MXC), which
-maps a single sandbox policy onto the best isolation mechanism for your OS —
+maps a single sandbox policy onto the best isolation mechanism for your OS -
 Seatbelt on macOS, bubblewrap on Linux, ProcessContainer on Windows Insiders
 builds. You control what's readable, writable, and reachable over the
 network, whether Git/`gh` credentials are exposed inside the sandbox, and
@@ -163,7 +163,7 @@ it and lock the policy via managed settings.
 providing identity, policy and billing. It's useful for offloading
 compute-heavy tasks without tying up your laptop, picking a session back up
 from a different device, and applying the same governance you already use
-for the Copilot cloud agent — cloud sandbox policy shares configuration with
+for the Copilot cloud agent - cloud sandbox policy shares configuration with
 cloud agent policy. Sessions move through three states: **Active**,
 **Stopped** (snapshotted so you can resume later) and **Deleted** (removed
 for good). An organisation or enterprise owner has to turn on the **Cloud
@@ -174,17 +174,17 @@ Learn more: [About cloud and local sandboxes](https://docs.github.com/en/copilot
 ## Delegating tasks to Copilot
 
 Once you're comfortable approving Copilot's tool calls one at a time, the
-next step is letting it run further ahead on its own — either on your
+next step is letting it run further ahead on its own - either on your
 machine or handed off to GitHub entirely.
 
 <div class="gdd-feature-grid">
   <div class="gdd-feature">
     <h4>Autopilot mode</h4>
-    <p>Runs locally in your CLI session with full permissions granted up front — Copilot works through a task without stopping to ask, and you watch progress in real time. Cycle to it with <code>Shift+Tab</code>, or run it directly.</p>
+    <p>Runs locally in your CLI session with full permissions granted up front - Copilot works through a task without stopping to ask, and you watch progress in real time. Cycle to it with <code>Shift+Tab</code>, or run it directly.</p>
   </div>
   <div class="gdd-feature">
     <h4><code>/delegate</code></h4>
-    <p>Hands the task to Copilot cloud agent on GitHub. Copilot commits a checkpoint, opens a draft pull request, and keeps working in the background — even after you close your laptop.</p>
+    <p>Hands the task to Copilot cloud agent on GitHub. Copilot commits a checkpoint, opens a draft pull request, and keeps working in the background - even after you close your laptop.</p>
   </div>
 </div>
 
@@ -201,7 +201,7 @@ copilot --autopilot --yolo --max-autopilot-continues 10 -p "fix the failing test
 
 Use **autopilot** when you want hands-free execution but still want to be
 the one watching it happen. Use **`/delegate`** when you want to hand a task
-off completely — Copilot cloud agent will open the pull request and request
+off completely - Copilot cloud agent will open the pull request and request
 your review once it's done.
 
 Learn more: [Delegating tasks to Copilot](https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/delegate-tasks-to-cca).
@@ -212,13 +212,13 @@ A desktop control centre for agent-driven development, built on the Copilot
 CLI and connected natively to GitHub. Generally available since June 2026,
 on every Copilot plan or with your own key.
 
-- **My work** — issues, pull requests, CI status and reviews in one inbox.
-- **Parallel sessions** — each in its own git worktree and branch.
-- **Session modes** — Interactive, Plan and Autopilot, plus model and
+- **My work** - issues, pull requests, CI status and reviews in one inbox.
+- **Parallel sessions** - each in its own git worktree and branch.
+- **Session modes** - Interactive, Plan and Autopilot, plus model and
   reasoning controls.
-- **Canvases** — shared work surfaces in the right-side panel.
-- **Automations** — recurring agent tasks, locally or in the cloud.
-- **Agent merge** — drives a pull request through checks to merge.
+- **Canvases** - shared work surfaces in the right-side panel.
+- **Automations** - recurring agent tasks, locally or in the cloud.
+- **Agent merge** - drives a pull request through checks to merge.
 
 Available on macOS, Windows and Linux.
 
@@ -231,7 +231,7 @@ Available on macOS, Windows and Linux.
 Every surface above leans on the same underlying Git feature to run more than
 one thing at once: **git worktrees**. A worktree is a second working
 directory checked out from the same repository, on its own branch, sharing
-one `.git` history — so you can have several branches checked out and built
+one `.git` history - so you can have several branches checked out and built
 independently, side by side, without stashing changes, switching branches,
 or cloning the repo again.
 
@@ -239,7 +239,7 @@ That's exactly why worktrees have become the default unit of isolation for
 coding agents. The Copilot CLI's `/worktree` command spins up an isolated
 tree and conversation for a task; the Copilot app runs each parallel session
 in its own worktree and branch; and this pattern is spreading well beyond
-Copilot itself — **GitHub Desktop 3.6** added native worktree support, so you
+Copilot itself - **GitHub Desktop 3.6** added native worktree support, so you
 can switch between a main worktree and several linked worktrees from a
 "Current Worktree" menu right in the toolbar, alongside Copilot-powered
 commit message authoring and merge conflict resolution (both now built on
@@ -248,11 +248,11 @@ the same Copilot SDK you saw earlier).
 <div class="gdd-feature-grid">
   <div class="gdd-feature">
     <h4>Why it matters for agents</h4>
-    <p>An agent working in its own worktree can't accidentally clobber the branch you're actively editing — each session gets a clean, isolated tree to run in.</p>
+    <p>An agent working in its own worktree can't accidentally clobber the branch you're actively editing - each session gets a clean, isolated tree to run in.</p>
   </div>
   <div class="gdd-feature">
     <h4>Why it matters for you</h4>
-    <p>Review a hotfix, keep a side-project building, and let an agent iterate on a feature branch — all from the same clone, without stash/switch/clone gymnastics.</p>
+    <p>Review a hotfix, keep a side-project building, and let an agent iterate on a feature branch - all from the same clone, without stash/switch/clone gymnastics.</p>
   </div>
   <div class="gdd-feature">
     <h4>Where you'll see it</h4>
@@ -308,7 +308,7 @@ through canvases.
 
 ## Where to start
 
-**Copilot CLI** — the agent where you already work. Interactive or scripted,
+**Copilot CLI** - the agent where you already work. Interactive or scripted,
 on every platform, across many repositories, with sandboxing and approval
 controls you set.
 
@@ -317,7 +317,7 @@ npm install -g @github/copilot
 # then run `copilot` in a project folder
 ```
 
-**GitHub Copilot app** — the control centre when several pieces of work are
+**GitHub Copilot app** - the control centre when several pieces of work are
 moving at once. Issues in, isolated sessions running, pull requests
 reviewed and merged, all in one window. Get it from
 [github.com/features/ai/github-app](https://github.com/features/ai/github-app)
