@@ -7,6 +7,11 @@ references referenced throughout the day.
 
 <ul class="gdd-resources">
   <li>
+    <span class="gdd-cat">Certification</span>
+    <h3><a href="https://learn.github.com/certifications" target="_blank" rel="noopener">GitHub Certifications</a></h3>
+    <p>Validate your GitHub skills with official certifications, including GitHub Copilot — a great next step after today.</p>
+  </li>
+  <li>
     <span class="gdd-cat">Curated list</span>
     <h3><a href="https://github.com/github/awesome-copilot" target="_blank" rel="noopener">Awesome Copilot</a></h3>
     <p>Community-curated prompts, instructions, chat modes, and skills for getting more out of GitHub Copilot.</p>
